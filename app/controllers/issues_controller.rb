@@ -57,7 +57,7 @@ class IssuesController < ApplicationController
     # update referrer
     data = get_form_data
     data['referrer'] = @issue.referrer ? (@issue.referrer + ',' + data['referrer']) : data['referrer']
-    baseline_note = '<span class="label warning" style="margin: 5px"><strong>' + current_user.nickname + '</strong></span>' + data['notes'] + '<br/>'
+    baseline_note = '<span class="label warning" style="margin-right: 5px"><strong>' + current_user.nickname + '</strong></span>' + data['notes'] + '<br/>'
     data['notes'] = @issue.notes ? (@issue.notes + baseline_note) : baseline_note
     respond_to do |format|
       if @issue.update(data)

@@ -6,12 +6,12 @@
 <table>
   <thead>
     <tr>
-      <th>Repository</th>
-      <th>Issue State</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th width="105">Url</th>
-      <th width="98">Refer a friend</th>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;">Repository</th>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;" width="80">Issue State</th>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;">Title</th>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;">Body</th>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;" width="115">URL</th>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;" width="115">Refer a friend</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,12 +20,12 @@
     <% @issues.each do |repo_issue| %>
       <% repo_issue.each do |issue| %>
         <tr>
-          <td><%= issue.repo %></td>
-          <td><span class="label warning small"><%= issue.state %></span></td>
-          <td><%= issue.title %></td>
-          <td><%= issue.body %></td>
-          <td><a class="button small info" style="color:#fff" href="<%= issue.html_url %>">View on GitHub</a></td>
-          <td><%= link_to 'Refer a friend', issues_path(id: issue.id, url: issue.html_url, repo: issue.repo, title: issue.title, body: issue.body, created_at: issue.created_at, updated_at: issue.updated_at), :method => :post, class: 'button small success' %></td>
+          <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.repo %></td>
+          <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><span class="label warning small"><%= issue.state %></span></td>
+          <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.title %></td>
+          <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px;font-variant: normal; font-weight: 500;"><%= issue.body %></td>
+          <td ><a class="button small info" style="color:#fff; font-size: 10px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500; padding: 4px" href="<%= issue.html_url %>"><i class="fa fa-share-square-o"></i> View on GitHub</a></td>
+          <td><%= link_to '<i class="fa fa-share-alt"></i> Refer a friend'.html_safe, issues_path(id: issue.id, url: issue.html_url, repo: issue.repo, title: issue.title, body: issue.body, created_at: issue.created_at, updated_at: issue.updated_at), :method => :post, class: 'button small success', style: "font-size: 10px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500; padding: 4px;" %></td>
         </tr>
        <% end %>
     <% end %>
@@ -35,6 +35,7 @@
 <hr />
 
 <h1>Issues you should check out!</h1>
+<h4 class="subheader">This section shows you all the issues that other users think you might be interested in. Think issue curation.</h4>
 
 <% unless @suggested_issues.empty?%>
 <table>
@@ -60,5 +61,5 @@
   </tbody>
 </table>
 <% else %>
-<p>Nobody's suggested any issues for you as yet!</p>
+<p>Nobody's suggested any issues for you as yet... :(</p>
 <% end %>

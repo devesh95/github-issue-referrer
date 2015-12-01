@@ -66,15 +66,15 @@
 
   <%= form_for(@issue) do |f| %>
     <div class="field">
-      <%= f.label :referrer, style: 'font-size: 10px' %><br>
-      <%= f.text_field :referrer, placeholder: 'Enter a GitHub username', value: '', autofocus: true, class: 'referrer_input' %>
+      <%= f.label :referrer, style: 'font-size: 24px' %><br>
+      <%= f.text_field :referrer, placeholder: 'Enter a GitHub username', value: '', autofocus: true, class: 'referrer_input', style: 'line-height:14px' %>
     </div>
     <div class="field">
       <%= f.label :notes, style: 'font-size: 24px' %><br>
       <%= f.text_area :notes, placeholder: 'Enter notes for the user here. Maybe a few lines on why they might find this issue interesting?', value: '', class: 'notes_input'%>
     </div>
     <div class="actions">
-      <%= f.submit 'Refer issue!', class: 'button small' %>
+      <%= f.submit 'Refer issue!', class: 'button', style: 'font-size:16px' %>
     </div>
   <% end %>
 </p>
