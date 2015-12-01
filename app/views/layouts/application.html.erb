@@ -10,9 +10,10 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= google_webfonts_init(:google => ['Open Sans']) %>
   </head>
 
-  <body style="padding-left: 5%; padding-right: 5%">
+  <body style="padding-left: 5%; padding-right: 5%; font-family: 'Open Sans'; font-style: normal; font-variant: normal; font-weight: 500; line-height: 26px;">
 
     <%= yield %>
 
