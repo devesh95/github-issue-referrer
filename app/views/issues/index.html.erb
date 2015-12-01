@@ -41,6 +41,7 @@
 <table>
   <thead>
     <tr>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;">Repository</th>
       <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;">Title</th>
       <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;">Body</th>
       <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;" width="150">Notes from referrer(s)</th>
@@ -52,6 +53,7 @@
   <tbody>
     <% @suggested_issues.each do |issue| %>
       <tr>
+        <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.repo %></td>
         <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.title %></td>
         <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.body %></td>
         <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.notes.html_safe %></td>
