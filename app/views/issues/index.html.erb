@@ -1,0 +1,64 @@
+<%= render 'nav' %>
+
+<h1>Explore GitHub Issues</h1>
+<h4 class="subheader">This section shows you all the available open issues amongst the GitHub repositories that you, or organizations that you belong to, own. If you find an issue, <span data-tooltip aria-haspopup="true" class="has-tip" title="Referring will cause the issue to show up in the Suggested Issues section for that user.">refer</span> it to a friend on GitHub!</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th>Issue State</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th width="105">Url</th>
+      <th width="98">Refer a friend</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |repo_issue| %>
+      <% repo_issue.each do |issue| %>
+        <tr>
+          <td><%= issue.repo %></td>
+          <td><span class="label warning small"><%= issue.state %></span></td>
+          <td><%= issue.title %></td>
+          <td><%= issue.body %></td>
+          <td><a class="button small info" style="color:#fff" href="<%= issue.html_url %>">View on GitHub</a></td>
+          <td><%= link_to 'Refer a friend', issues_path(id: issue.id, url: issue.html_url, repo: issue.repo, title: issue.title, body: issue.body, created_at: issue.created_at, updated_at: issue.updated_at), :method => :post, class: 'button small success' %></td>
+        </tr>
+       <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<hr />
+
+<h1>Issues you should check out!</h1>
+
+<% unless @suggested_issues.empty?%>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th width="150">Notes from referrer(s)</th>
+      <th width="105">Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suggested_issues.each do |issue| %>
+      <tr>
+        <td><%= issue.title %></td>
+        <td><%= issue.body %></td>
+        <td><%= issue.notes.html_safe %></td>
+        <td><a class="button small" style="color:#fff" href="<%= issue.url %>">View on GitHub</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p>Nobody's suggested any issues for you as yet!</p>
+<% end %>

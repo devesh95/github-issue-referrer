@@ -1,0 +1,5 @@
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), {:class => 'github_login', :style => 'margin:auto; font-size: 24px; text-align:center'} %><br />
+  <% end -%>
+<% end -%>
