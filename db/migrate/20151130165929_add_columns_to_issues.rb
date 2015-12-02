@@ -3,5 +3,6 @@ class AddColumnsToIssues < ActiveRecord::Migration
     add_column :issues, :referrer, :string
     add_column :issues, :repo, :string
     add_column :issues, :notes, :string
+    add_column :issues, :number, :integer
   end
 end

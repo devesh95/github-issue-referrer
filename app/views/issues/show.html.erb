@@ -1,6 +1,6 @@
 <%= render 'nav' %>
 
-<% if notice != '' %>
+<% if (notice && !notice.empty?) %>
 <div data-alert class="alert-box success radius">
   <span style="color:#fff; font-size: 12px" id="notice"><%= notice %></span>
   <a href="#" class="close">&times;</a>

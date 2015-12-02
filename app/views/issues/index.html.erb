@@ -1,5 +1,12 @@
 <%= render 'nav' %>
 
+<% if (notice && !notice.empty?) %>
+<div data-alert class="alert-box success radius">
+  <span style="color:#fff; font-size: 12px" id="notice"><%= notice %></span>
+  <a href="#" class="close">&times;</a>
+</div>
+<% end %>
+
 <h1>Explore GitHub Issues</h1>
 <h4 class="subheader">This section shows you all the available open issues amongst the GitHub repositories that you, or organizations that you belong to, own. If you find an issue, <span data-tooltip aria-haspopup="true" class="has-tip" title="Referring will cause the issue to show up in the Suggested Issues section for that user.">refer</span> it to a friend on GitHub!</h4>
 
@@ -25,7 +32,7 @@
           <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.title %></td>
           <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px;font-variant: normal; font-weight: 500;"><%= issue.body %></td>
           <td ><a class="button small info" style="color:#fff; font-size: 10px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500; padding: 4px" href="<%= issue.html_url %>"><i class="fa fa-share-square-o"></i> View on GitHub</a></td>
-          <td><%= link_to '<i class="fa fa-share-alt"></i> Refer a friend'.html_safe, issues_path(id: issue.id, url: issue.html_url, repo: issue.repo, title: issue.title, body: issue.body, created_at: issue.created_at, updated_at: issue.updated_at), :method => :post, class: 'button small success', style: "font-size: 10px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500; padding: 4px;" %></td>
+          <td><%= link_to '<i class="fa fa-share-alt"></i> Refer a friend'.html_safe, issues_path(id: issue.id, url: issue.html_url, repo: issue.repo, title: issue.title, body: issue.body, number: issue.number, created_at: issue.created_at, updated_at: issue.updated_at), :method => :post, class: 'button small success', style: "font-size: 10px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500; padding: 4px;" %></td>
         </tr>
        <% end %>
     <% end %>
@@ -46,6 +53,7 @@
       <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;">Body</th>
       <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;" width="150">Notes from referrer(s)</th>
       <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;" width="105">URL</th>
+      <th style="font-size: 14px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;" width="105">Action</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -58,6 +66,7 @@
         <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.body %></td>
         <td style="font-size: 12px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500;"><%= issue.notes.html_safe %></td>
         <td style="font-size: 10px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500; padding: 4px;"><a class="button small" style="color:#fff" href="<%= issue.url %>">View on GitHub</a></td>
+        <td><%= link_to '<i class="fa fa-github"></i> Assign Issue'.html_safe, assign_issue_path(id: issue.id, number: issue.number, url: issue.url, repo: issue.repo, title: issue.title, body: issue.body, created_at: issue.created_at, updated_at: issue.updated_at), :method => :post, class: 'button small success', style: "font-size: 10px;font-family: 'Open Sans'; font-style: normal; line-height: 20px; font-variant: normal; font-weight: 500; padding: 4px;" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151130165929) do
     t.string   "referrer"
     t.string   "repo"
     t.string   "notes"
+    t.integer  "number"
   end
 
   create_table "users", force: :cascade do |t|
